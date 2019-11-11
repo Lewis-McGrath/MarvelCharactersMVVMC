@@ -12,11 +12,13 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
    
     let characters: [String] = ["Thor","Hulk","Captain America"]
     let characterImage = [UIImage(named: "A"), UIImage(named: "B")]
+    let characterListViewModel = CharacterListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         // Do any additional setup after loading the view.
+        characterListViewModel.getCharacterList()
     }
     
     let tableview: UITableView = {

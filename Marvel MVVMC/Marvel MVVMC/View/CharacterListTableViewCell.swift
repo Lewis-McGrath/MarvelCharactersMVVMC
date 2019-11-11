@@ -59,12 +59,10 @@ class CharacterListTableViewCell: UITableViewCell {
             cellView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             cellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             
-            
             characterImageView.heightAnchor.constraint(equalToConstant: 60),
             characterImageView.widthAnchor.constraint(equalToConstant: 60),
             characterImageView.centerYAnchor.constraint(equalTo: cellView.centerYAnchor),
             characterImageView.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
-            
             
             characterLabel.heightAnchor.constraint(equalToConstant: 75),
             characterLabel.widthAnchor.constraint(equalToConstant: 200),
