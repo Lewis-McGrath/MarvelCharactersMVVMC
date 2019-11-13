@@ -47,11 +47,13 @@ class CharacterListTableViewCell: UITableViewCell {
     }()
     
     
-    func setupView() {
+    func setupView() {   //setupView(character: Result)
         addSubview(cellView)
         cellView.addSubview(characterLabel)
         cellView.addSubview(characterImageView)
         self.selectionStyle = .none
+//        characterLabel.text = character.name
+//        characterImageView.image = UIImage(named:character.thumbnail.path)
         
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: topAnchor, constant: 10),

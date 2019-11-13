@@ -1,5 +1,5 @@
 //
-//  CharacterListViewModel.swift
+//  CharacterListService.swift
 //  Marvel MVVMC
 //
 //  Created by Lewis McGrath on 08/11/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CharacterListViewModel {
+class CharacterListService {
     
     let dataSession = URLSession.shared
     var dataTask: URLSessionDataTask?
@@ -17,25 +17,24 @@ class CharacterListViewModel {
     
     
     
-    func getCharacterList() {
+    func getCharacterDataResponse(completion: @escaping (Response) -> Void ) {
         let task = dataSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
-                print(error?.localizedDescription)
+                print(error)
                 return
             }
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
                 print("Server error!")
                 return
             }
-            print(response.statusCode)
-            //JSON PARSING
             if let data = data {
                 do {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .iso8601
                     
-                    let responseModel = try decoder.decode(CharacterData.self, from: data)
-                    print(responseModel.data.results[2].name) 
+                    let responseModel = try decoder.decode(Response.self, from: data)
+                    print(responseModel)
+                    completion(responseModel)
                 } catch let error {
                    print(error)
                 }
@@ -44,4 +43,3 @@ class CharacterListViewModel {
         task.resume()
     }
 }
-//JUST WANT NAME AND RESULT DESCRIPTION inside of RESULT STRUCT.
