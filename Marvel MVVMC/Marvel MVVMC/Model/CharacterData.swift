@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Welcome
-struct Welcome: Codable {
+struct CharacterData: Codable {
     let code: Int
     let status, copyright, attributionText, attributionHTML: String
     let etag: String
@@ -25,7 +25,8 @@ struct DataClass: Codable {
 // MARK: - Result
 struct Result: Codable {
     let id: Int
-    let name, resultDescription: String
+    let name: String
+    let resultDescription: String
     let modified: Date
     let thumbnail: Thumbnail
     let resourceURI: String
@@ -35,7 +36,8 @@ struct Result: Codable {
     let urls: [URLElement]
 
     enum CodingKeys: String, CodingKey {
-        case id, name
+        case id = "id"
+        case name = "name"
         case resultDescription = "description"
         case modified, thumbnail, resourceURI, comics, series, stories, events, urls
     }

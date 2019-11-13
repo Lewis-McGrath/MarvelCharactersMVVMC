@@ -23,20 +23,22 @@ class CharacterListViewModel {
                 print(error?.localizedDescription)
                 return
             }
-            
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
                 print("Server error!")
                 return
             }
-            do {
-                let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: [])
-                let jsonDecoder = JSONDecoder()
-                
-                
-                let character = try jsonDecoder.decode(Result.self, from: jsonResponse)
-                print(character.name)
-            } catch {
-                print("JSON error: \(error.localizedDescription)")
+            print(response.statusCode)
+            //JSON PARSING
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    
+                    let responseModel = try decoder.decode(CharacterData.self, from: data)
+                    print(responseModel.data.results[2].name) 
+                } catch let error {
+                   print(error)
+                }
             }
         }
         task.resume()
