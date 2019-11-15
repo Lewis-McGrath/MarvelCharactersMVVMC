@@ -9,14 +9,22 @@
 import UIKit
 
 class CharacterListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
-    let characters: [String] = ["Thor","Hulk","Captain America"]
-    let characterImage = [UIImage(named: "A"), UIImage(named: "B")]
+    
+    var listOfCharacters = [CharacterDetail]()
+    
+    let characterListService = CharacterListService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        // Do any additional setup after loading the view.
+        
+        characterListService.getCharacterDataResponse(completion: { [weak self] response in
+            self?.listOfCharacters = response.data.results
+            DispatchQueue.main.async {
+                self?.tableview.reloadData()
+                
+            }
+        })
     }
     
     let tableview: UITableView = {
@@ -43,14 +51,19 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        characters.count
+        listOfCharacters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterListTableViewCell
         cell.backgroundColor = UIColor.white
-        cell.characterLabel.text = characters[indexPath.row]
-//        cell.characterImage.image = characterImage[indexPath.row]
+        let char = listOfCharacters[indexPath.row]
+        cell.characterLabel.text = char.name
+        characterListService.getCharacterImageResponse(from: char.thumbnail.imagePath, completion: { (image) in
+            DispatchQueue.main.async {
+                cell.characterImageView.image = image
+            }
+        })
         return cell
     }
     

@@ -6,77 +6,34 @@
 //  Copyright © 2019 Lewis McGrath. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-// MARK: - Welcome
-struct Welcome: Codable {
-    let code: Int
-    let status, copyright, attributionText, attributionHTML: String
-    let etag: String
-    let data: DataClass
+// MARK: - Response
+struct Response: Codable {
+    let data: CharacterList
 }
 
-// MARK: - DataClass
-struct DataClass: Codable {
+// MARK: - CharacterList
+struct CharacterList: Codable {
     let offset, limit, total, count: Int
-    let results: [Result]
+    let results: [CharacterDetail]
 }
 
-// MARK: - Result
-struct Result: Codable {
+// MARK: - CharacterDetail
+struct CharacterDetail: Codable {
     let id: Int
-    let name, resultDescription: String
-    let modified: Date
+    let name: String
+    let resultDescription: String
     let thumbnail: Thumbnail
-    let resourceURI: String
-    let comics, series: Comics
-    let stories: Stories
-    let events: Comics
-    let urls: [URLElement]
 
     enum CodingKeys: String, CodingKey {
-        case id, name
+        case id = "id"
+        case name = "name"
         case resultDescription = "description"
-        case modified, thumbnail, resourceURI, comics, series, stories, events, urls
+        case thumbnail
     }
 }
 
-// MARK: - Comics
-struct Comics: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [ComicsItem]
-    let returned: Int
-}
-
-// MARK: - ComicsItem
-struct ComicsItem: Codable {
-    let resourceURI: String
-    let name: String
-}
-
-// MARK: - Stories
-struct Stories: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [StoriesItem]
-    let returned: Int
-}
-
-// MARK: - StoriesItem
-struct StoriesItem: Codable {
-    let resourceURI: String
-    let name: String
-    let type: ItemType
-}
-
-enum ItemType: String, Codable {
-    case cover = "cover"
-    case empty = ""
-    case interiorStory = "interiorStory"
-    case letters = "letters"
-    case pinUp = "pin-up"
-}
 
 // MARK: - Thumbnail
 struct Thumbnail: Codable {
@@ -87,20 +44,14 @@ struct Thumbnail: Codable {
         case path
         case thumbnailExtension = "extension"
     }
+    
+    var imagePath : String {
+        return path + "." + thumbnailExtension.rawValue
+    }
 }
 
 enum Extension: String, Codable {
     case jpg = "jpg"
 }
 
-// MARK: - URLElement
-struct URLElement: Codable {
-    let type: URLType
-    let url: String
-}
 
-enum URLType: String, Codable {
-    case comiclink = "comiclink"
-    case detail = "detail"
-    case wiki = "wiki"
-}
