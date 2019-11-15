@@ -6,7 +6,7 @@
 //  Copyright © 2019 Lewis McGrath. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - Response
 struct Response: Codable {
@@ -35,7 +35,6 @@ struct CharacterDetail: Codable {
 }
 
 
-
 // MARK: - Thumbnail
 struct Thumbnail: Codable {
     let path: String
@@ -44,6 +43,10 @@ struct Thumbnail: Codable {
     enum CodingKeys: String, CodingKey {
         case path
         case thumbnailExtension = "extension"
+    }
+    
+    var imagePath : String {
+        return path + "." + thumbnailExtension.rawValue
     }
 }
 

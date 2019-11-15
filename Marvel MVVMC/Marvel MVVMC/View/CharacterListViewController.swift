@@ -9,7 +9,7 @@
 import UIKit
 
 class CharacterListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
+    
     var listOfCharacters = [CharacterDetail]()
     
     let characterListService = CharacterListService()
@@ -17,11 +17,12 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        // Do any additional setup after loading the view.
+        
         characterListService.getCharacterDataResponse(completion: { [weak self] response in
             self?.listOfCharacters = response.data.results
             DispatchQueue.main.async {
                 self?.tableview.reloadData()
+                
             }
         })
     }
@@ -56,10 +57,13 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterListTableViewCell
         cell.backgroundColor = UIColor.white
-       
-
-        cell.characterLabel.text = listOfCharacters[indexPath.row].name
-    //    cell.characterImage.image = characterImage[indexPath.row]
+        let char = listOfCharacters[indexPath.row]
+        cell.characterLabel.text = char.name
+        characterListService.getCharacterImageResponse(from: char.thumbnail.imagePath, completion: { (image) in
+            DispatchQueue.main.async {
+                cell.characterImageView.image = image
+            }
+        })
         return cell
     }
     
