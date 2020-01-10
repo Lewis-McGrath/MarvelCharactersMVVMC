@@ -12,7 +12,6 @@
 		800764AD23758002001F25AA /* CharacterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800764AC23758002001F25AA /* CharacterListTableViewCell.swift */; };
 		800764AF2375C813001F25AA /* CharacterListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800764AE2375C813001F25AA /* CharacterListService.swift */; };
 		801D8DE323844BE80006161C /* Marvel_MVVMCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801D8DE223844BE80006161C /* Marvel_MVVMCUITests.swift */; };
-		801D8DEA23844BF80006161C /* CharacterListServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801D8DDA238442A40006161C /* CharacterListServiceSpec.swift */; };
 		80DB4AE023C8904400723C87 /* CharacterListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DB4ADF23C8904400723C87 /* CharacterListServiceTests.swift */; };
 		80DB4AE223C8A17100723C87 /* mockresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 80DB4AE123C8A17100723C87 /* mockresponse.json */; };
 		80E779A4237076AD00755A28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E779A3237076AD00755A28 /* AppDelegate.swift */; };
@@ -45,7 +44,6 @@
 		800764AA23747683001F25AA /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		800764AC23758002001F25AA /* CharacterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListTableViewCell.swift; sourceTree = "<group>"; };
 		800764AE2375C813001F25AA /* CharacterListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListService.swift; sourceTree = "<group>"; };
-		801D8DDA238442A40006161C /* CharacterListServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListServiceSpec.swift; sourceTree = "<group>"; };
 		801D8DE023844BE80006161C /* Marvel MVVMCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marvel MVVMCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		801D8DE223844BE80006161C /* Marvel_MVVMCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel_MVVMCUITests.swift; sourceTree = "<group>"; };
 		801D8DE423844BE80006161C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,14 +89,6 @@
 		801D8DD8238442520006161C /* Testing */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Testing;
-			sourceTree = "<group>";
-		};
-		801D8DD9238442590006161C /* Testing */ = {
-			isa = PBXGroup;
-			children = (
-				801D8DDA238442A40006161C /* CharacterListServiceSpec.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -182,7 +172,6 @@
 				8092F9F123707C8700729A6D /* Networking */,
 				8092F9EF23707C7400729A6D /* Model */,
 				8092F9EE23707C6900729A6D /* View */,
-				801D8DD9238442590006161C /* Testing */,
 				80E779A3237076AD00755A28 /* AppDelegate.swift */,
 				80E779A5237076AD00755A28 /* SceneDelegate.swift */,
 				80E779A7237076AD00755A28 /* ContentView.swift */,
@@ -334,7 +323,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				801D8DEA23844BF80006161C /* CharacterListServiceSpec.swift in Sources */,
 				801D8DE323844BE80006161C /* Marvel_MVVMCUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,7 +39,7 @@ class CharacterListService {
                     let responseModel = try decoder.decode(Response.self, from: data)
                     completion(responseModel)
                 } catch let error {
-                    print(error)
+                   print(error)
                     completion(nil)
                 }
             }
@@ -49,22 +49,26 @@ class CharacterListService {
     
     
     // MARK: Image Call
-    func getCharacterImageResponse(from thumbnailImageUrl: String, completion: @escaping (UIImage) -> Void ) {
+    func getCharacterImageResponse(from thumbnailImageUrl: String, completion: @escaping (UIImage?) -> Void ) {
         let url = URL(string: thumbnailImageUrl)!
         let task = dataSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
-                print("********HELLO*******", error?.localizedDescription)
+                print(error?.localizedDescription)
+                completion(nil)
                 return
             }
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                print("Server error!")
+                completion(nil)
+                print("Server done fucked up")
                 return
             }
             if let data = data, let image = UIImage(data: data) {
                 completion(image)
             } else {
                 print("Invalid data from image thumbnail")
+                completion(nil)
             }
         }
         task.resume()
     }}
+
