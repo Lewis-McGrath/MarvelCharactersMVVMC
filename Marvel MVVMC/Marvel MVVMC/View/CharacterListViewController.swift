@@ -19,7 +19,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
         setupTableView()
         
         characterListService.getCharacterDataResponse(completion: { [weak self] response in
-            self?.listOfCharacters = response.data.results
+            self?.listOfCharacters = response!.data.results
             DispatchQueue.main.async {
                 self?.tableview.reloadData()
                 
