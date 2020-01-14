@@ -8,7 +8,12 @@
 
 import UIKit
 
-class CharacterListService {
+protocol CharacterListServiceProtocol {
+    func getCharacterDataResponse(completion: @escaping (Response?) -> Void)
+    func getCharacterImageResponse(from thumbnailImageUrl: String, completion: @escaping (UIImage?) -> Void)
+}
+
+class CharacterListService: CharacterListServiceProtocol {
     
     let dataSession: URLSession
     var dataTask: URLSessionDataTask?
@@ -39,7 +44,7 @@ class CharacterListService {
                     let responseModel = try decoder.decode(Response.self, from: data)
                     completion(responseModel)
                 } catch let error {
-                   print(error)
+                    print(error)
                     completion(nil)
                 }
             }
@@ -70,5 +75,5 @@ class CharacterListService {
             }
         }
         task.resume()
-    }}
-
+    }
+}

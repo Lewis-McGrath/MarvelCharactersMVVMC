@@ -12,7 +12,16 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     
     var listOfCharacters = [CharacterDetail]()
     
-    let characterListService = CharacterListService()
+    let characterListService: CharacterListServiceProtocol
+    
+    init(characterListService: CharacterListServiceProtocol) {
+        self.characterListService = characterListService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +65,6 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterListTableViewCell
-        cell.backgroundColor = UIColor.white
         let char = listOfCharacters[indexPath.row]
         cell.characterLabel.text = char.name
         characterListService.getCharacterImageResponse(from: char.thumbnail.imagePath, completion: { (image) in
@@ -70,6 +78,4 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
-    
 }

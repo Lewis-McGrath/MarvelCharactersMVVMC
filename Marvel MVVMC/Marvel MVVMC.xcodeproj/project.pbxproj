@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		800014AE23CDCF1B0041B3B6 /* CharacterListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800014AD23CDCF1B0041B3B6 /* CharacterListViewControllerTests.swift */; };
 		800764A72374657D001F25AA /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800764A62374657D001F25AA /* CharacterData.swift */; };
 		800764AB23747683001F25AA /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800764AA23747683001F25AA /* CharacterListViewController.swift */; };
 		800764AD23758002001F25AA /* CharacterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800764AC23758002001F25AA /* CharacterListTableViewCell.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		800014AD23CDCF1B0041B3B6 /* CharacterListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewControllerTests.swift; sourceTree = "<group>"; };
 		800764A62374657D001F25AA /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
 		800764AA23747683001F25AA /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		800764AC23758002001F25AA /* CharacterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListTableViewCell.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				80DB4ADF23C8904400723C87 /* CharacterListServiceTests.swift */,
 				80DB4AD923C8903600723C87 /* Info.plist */,
 				80DB4AE123C8A17100723C87 /* mockresponse.json */,
+				800014AD23CDCF1B0041B3B6 /* CharacterListViewControllerTests.swift */,
 			);
 			path = "Marvel MVVMCTests";
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				800014AE23CDCF1B0041B3B6 /* CharacterListViewControllerTests.swift in Sources */,
 				80DB4AE023C8904400723C87 /* CharacterListServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

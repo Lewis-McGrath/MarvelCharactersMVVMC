@@ -123,16 +123,16 @@ class CharacterListServiceTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 5.0)
     }
-    //HOW TO MAKE YOU FAIL YOU FUCKER.
+   
     func test_getCharacterImageResponse_noError_accpetableStatusCode_dataIncorrect_errors() {
         let response = HTTPURLResponse(url: URL(string: "fake")!, statusCode: 220, httpVersion: nil, headerFields: nil)
          let testBundle = Bundle(for: CharacterListServiceTests.self)
-               let url = testBundle.url(forResource: "mockresponse", withExtension: "json")
-               let data = try? Data(contentsOf: url!)
+         let url = testBundle.url(forResource: "mockresponse", withExtension: "json")
+         let data = try? Data(contentsOf: url!)
         mockURLSession.response = response
-        mockURLSession.data = data
+        mockURLSession.data = nil
         let expectation = XCTestExpectation()
-        subject.getCharacterDataResponse { (response) in
+        subject.getCharacterImageResponse(from: "fake") { (response) in
             XCTAssertNil(response)
             expectation.fulfill()
         }
